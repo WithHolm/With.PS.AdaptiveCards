@@ -14,14 +14,18 @@ namespace With.AdaptiveCards.CSharp
         [Parameter]
         public string Speak { get; set; }
 
+        private AdaptiveAction _Action { get; set; }
+
         protected override void BeginProcessing()
         {
+            //adaptive
+            //_Action = new AdaptiveAction();
             base.BeginProcessing();
         }
 
         protected override void ProcessRecord()
         {
-
+            
             // AdaptiveAction _Action = new AdaptiveAction();
             base.ProcessRecord();
         }

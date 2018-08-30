@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AdaptiveCards;
 using System.Management.Automation;
+using Newtonsoft.Json;
 
 namespace With.AdaptiveCards.CSharp
 {
@@ -31,12 +32,20 @@ namespace With.AdaptiveCards.CSharp
 
         protected override void ProcessRecord()
         {
+            if(!string.IsNullOrEmpty(Speak))
+            {
+                _card.Speak = Speak;
+            }
+
+            _card.Actions = this.Action;
+            _card.Body = this.Body;
             base.ProcessRecord();
         }
 
         protected override void EndProcessing()
         {
-            _card.ToJson();
+            //_card.ToJson();
+            WriteObject(_card);
             base.EndProcessing();
         }
     }
